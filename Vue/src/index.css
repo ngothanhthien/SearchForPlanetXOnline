@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+    --surface: rgba(255, 255, 255,1);
+    --background: rgba(255, 243, 224,1);
+    --onSurface:rgba(78, 52, 46,1);
+    --onSurface-30:rgba(78, 52, 46,0.3);
+    --onSurfaceVariant:rgba(78, 52, 46,1);
+    --primary-color: rgba(255, 138, 128,1);
+    --primary-color-30: rgba(255, 138, 128,0.3);
+    --primary-color-10:rgba(236, 89, 75, 0.1);
+    --light-primary-color:rgba(255, 188, 175,1);
+    --dark-primary-color:rgba(200, 90, 84,1);
+    --secondary-color: rgba(220, 231, 117,1);
+    --light-secondary-color: rgba(255, 255, 166,1);
+    --dark-secondary-color:rgba(168, 181, 69,1);
+    --text-default:rgba(78, 52, 46,1);
+    --neutral-color-10:rgba(78, 52, 46,0.1);
+    --neutral-color-5:rgba(78, 52, 46,0.05);
+    --error-color:rgba(170, 0, 255,1);
+    --success-color:rgba(27, 94, 32,1);
+}
+body{
+    color: var(--text-default);
+}
