@@ -1,20 +1,52 @@
 <script setup>
-import { reactive,unref } from "vue";
+import { reactive, unref, ref } from "vue";
 import LockIcon from "../components/icons/LockIcon.vue";
 import PersonIcon from "../components/icons/PersonIcon.vue";
 import Button from "../components/Button.vue";
-import {loginApi} from "@/api";
+import { setUserLoginToken } from "@/logic/userLoginToken";
+import { loginApi, csrf } from "@/api";
+import router from "@/router/index";
+import axios from "axios";
 //const props=defineProps([])
 const form = reactive({
   account: "",
   password: "",
 });
+const errors = reactive({
+  account: "",
+  password: "",
+  message: "",
+});
 const submitForm = async () => {
-  const response=await fetch(loginApi,{
+  const loginButton = document.getElementById("login-button");
+  loginButton.textContent = "đang đăng nhập...";
+  loginButton.disabled = true;
+  errors.account = "";
+  errors.password = "";
+  errors.message = "";
+  // try {
+  const response = await fetch(loginApi, {
     method: "POST",
-    body:JSON.stringify(unref(form))
-  })
-  console.log(response)
+    body: JSON.stringify(unref(form)),
+    headers: {
+      "Content-type": "application/json",
+      Accept: "application/json",
+    },
+  });
+  const data = await response.json();
+  if (data.errors) {
+    Object.keys(data.errors).forEach(function (key, index) {
+      errors[key] = data.errors[key][0];
+    });
+  } else if (data.message) {
+    errors.message = data.message;
+  } else {
+    setUserLoginToken(data.token);
+    router.push({ name: "Home" });
+  }
+  loginButton.textContent = "đăng nhập";
+  loginButton.disabled = false;
+  form.password = "";
 };
 </script>
 
@@ -26,8 +58,13 @@ const submitForm = async () => {
     <div
       class="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10"
     >
-      <div class="self-center mb-5 text-xl font-light sm:text-2xl">
+      <div class="self-center mb-1 text-xl font-light sm:text-2xl">
         Đăng nhập
+      </div>
+      <div
+        class="text-skin-error self-center mb-4 first-letter:capitalize mt-1"
+      >
+        {{ errors.message }}
       </div>
       <div>
         <form @submit.prevent action="#" autoComplete="off">
@@ -45,6 +82,9 @@ const submitForm = async () => {
                 v-model="form.account"
               />
             </div>
+            <div class="text-skin-error first-letter:capitalize mt-1">
+              {{ errors.account }}
+            </div>
           </div>
           <div class="flex flex-col mb-6">
             <div class="flex relative">
@@ -61,11 +101,15 @@ const submitForm = async () => {
                 v-model="form.password"
               />
             </div>
+            <div class="text-skin-error first-letter:capitalize mt-1">
+              {{ errors.password }}
+            </div>
           </div>
           <div class="flex w-full">
             <Button
               class="bg-skin-primary text-white"
               @buttonClick="submitForm"
+              id="login-button"
             >
               Đăng nhập
             </Button>

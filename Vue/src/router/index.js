@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/Login.vue'
+import {getUserLoginToken} from '@/logic/userLoginToken'
 
-const getUserToken=()=>localStorage.getItem('userToken');
-const checkLoggedIn=(to)=>{
-  const token=getUserToken();
+const checkLoggedIn=()=>{
+  const token=getUserLoginToken();
   if(!token){
     return '/'
   }
 }
 const isLoggedIn=()=>{
-  const token=getUserToken();
+  const token=getUserLoginToken();
   if(token){
     return '/home'
   }
