@@ -20,6 +20,16 @@
     --neutral-color-5:rgba(78, 52, 46,0.05);
     --error-color:rgba(170, 0, 255,1);
     --success-color:rgba(27, 94, 32,1);
+    --dark-background: rgba(28,33,40,1);
+    --dark-surface: rgba(34,39,46,1);
+    --dark-text-default:rgba(173, 186, 199,1);
+    --dark-text-muted:rgba(118, 131, 144,1);
+    --dark-button-background:rgba(55,62,71,1);
+    --dark-button-background-hover: #444c56;
+    --player-green:#57ab5a;
+    --player-red:#e5534b;
+    --player-purple:#986ee2;
+    --player-yellow:#c69026;
 }
 body{
     color: var(--text-default);

@@ -32,7 +32,8 @@ const logout = async () => {
     <div class="mx-auto text-center p-4 px-10 border rounded-md">
       <div class="mb-2"><a class="text-white font-medium text-2xl" href="https://boardgamegeek.com/boardgame/279537/search-planet-x">Search for planet X</a></div>
       <div class="max-w-md mx-auto">
-        <Button class="bg-skin-primary text-white my-0.5">Create Room</Button>
+        <Button class="bg-skin-primary text-white my-0.5">Create recommend room</Button>
+        <Button class="bg-skin-primary text-white my-0.5">Create custom room</Button>
         <Button class="bg-skin-primary text-white my-0.5">Join Room</Button>
         <Button class="bg-skin-primary text-white my-0.5">Solo</Button>
         <div class="font-medium mt-2">v2.3</div>

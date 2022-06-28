@@ -29,6 +29,17 @@ const router = createRouter({
       component: ()=>import('@/views/Home.vue'),
       beforeEnter: checkLoggedIn
     },
+    {
+      path:'/game',
+      name:'Game',
+      component: ()=>import('@/views/Game.vue'),
+      beforeEnter: checkLoggedIn
+    },
+    {
+      path:'/test',
+      name:'Test',
+      component: ()=>import('@/views/Test.vue'),
+    }
   ]
 })
 
