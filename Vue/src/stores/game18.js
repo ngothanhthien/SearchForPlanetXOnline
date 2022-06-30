@@ -22,9 +22,4 @@ export const useGame18Store = defineStore({
     isX1Reveal:false,
     isX2Reveal:false,
   }),
-  actions: {
-    increment() {
-      this.counter++
-    }
-  }
 })
