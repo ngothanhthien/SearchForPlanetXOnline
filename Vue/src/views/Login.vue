@@ -6,7 +6,6 @@ import Button from "../components/Button.vue";
 import { setUserLoginToken } from "@/logic/userLoginToken";
 import { loginApi, csrf } from "@/api";
 import router from "@/router/index";
-import axios from "axios";
 //const props=defineProps([])
 const form = reactive({
   account: "",
