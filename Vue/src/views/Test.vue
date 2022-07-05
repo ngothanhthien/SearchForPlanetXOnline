@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-const socket = io('http://localhost:6001')
+import {socket} from '../socket.io'
 socket.on('laravel_database_chat', (data) => { console.log(data) })
 const input = ref(null);
 const sendMessage = async () => {

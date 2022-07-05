@@ -4,9 +4,8 @@ import LockIcon from "../components/icons/LockIcon.vue";
 import PersonIcon from "../components/icons/PersonIcon.vue";
 import Button from "../components/Button.vue";
 import { setUserLoginToken } from "@/logic/userLoginToken";
-import { loginApi, csrf } from "@/api";
+import { loginApi } from "@/api";
 import router from "@/router/index";
-//const props=defineProps([])
 const form = reactive({
   account: "",
   password: "",
@@ -41,7 +40,7 @@ const submitForm = async () => {
     errors.message = data.message;
   } else {
     setUserLoginToken(data.token);
-    router.push({ name: "Home" });
+    router.push({ name: "SelectOption" });
   }
   loginButton.textContent = "đăng nhập";
   loginButton.disabled = false;

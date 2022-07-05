@@ -40,10 +40,10 @@ watch(control.params, (arr) => {
   if (arr.length == 1 && control.fn == "research") {
     researchExc();
   }
-  if(arr.length==1&&control.fn=="target"){
+  if (arr.length == 1 && control.fn == "target") {
     targetExc();
   }
-  if(arr.length==1&control.fn=="locate X"){
+  if ((arr.length == 1) & (control.fn == "locate X")) {
     locateXExc();
   }
 });
@@ -206,12 +206,13 @@ watch(control.params, (arr) => {
         />
       </div>
     </div>
+    <!-- survey log -->
     <div class="bg-skin-dark-surface mr-2 my-2 grow divide-y">
       <div class="mb-2 text-center text-xl">Survey log</div>
       <div class="divide-x flex">
         <div
           class="w-1/5 py-1"
-          :class="`text-skin-player-${yourColor}`"
+          :class="`text-skin-player-${game18Store.player.color}`"
           v-for="icon in [
             DwarfIcon,
             CometIcon,
@@ -224,9 +225,17 @@ watch(control.params, (arr) => {
         </div>
       </div>
       <div class="divide-x flex">
-        <div class="w-1/5">
-          <div class="text-center pt-1">1-5</div>
-          <div class="text-center pt-1">1-5</div>
+        <div
+          v-for="key in Object.keys(game18Store.player.surveys)"
+          class="w-1/5"
+        >
+          <div
+            v-for="log in game18Store.player.surveys[key]"
+            class="text-center pt-1"
+          >
+            <span class="mr-1">{{ log.range }}:</span
+            ><span>{{ log.result }}</span>
+          </div>
         </div>
       </div>
     </div>

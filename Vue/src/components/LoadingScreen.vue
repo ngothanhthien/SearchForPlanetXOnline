@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <img
+      src="/img/loading.gif"
+      alt="loading..."
+      class="w-full"
+    />
+  </div>
+</template>

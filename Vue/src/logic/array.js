@@ -24,3 +24,4 @@ export const countNotInteger=(arr)=>{
     })
     return count;
 }
+export const arrCountValue=(arr,v)=>arr.filter((x)=>x==v).length;

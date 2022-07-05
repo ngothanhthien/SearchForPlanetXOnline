@@ -28,7 +28,7 @@ const activeSector = computed(() => {
     :class="{
       'cs-sector-wrapper':(control.fn == 'survey'||control.fn == 'target'),
       'active':activeSector.includes(number),
-      'bg-skin-dark-button-background-hover cursor-pointer':control.fn=='locate X',
+      'onLocateX':control.fn=='locate X',
     }"
     class="w-full rounded-md bg-skin-dark-button-background"
   >
@@ -90,7 +90,7 @@ const activeSector = computed(() => {
 .active .cs-sector-number.in-params{
   @apply text-skin-base bg-skin-primary border-none
 }
-.active.cs-sector-wrapper {
+.active.cs-sector-wrapper, .onLocateX {
   @apply bg-skin-dark-button-background-hover cursor-pointer;
 }
 </style>

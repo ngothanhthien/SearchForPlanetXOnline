@@ -1,17 +1,50 @@
-import { toggleElement, countInteger, countNotInteger } from "@/logic/array";
+import { toggleElement, countInteger, arrCountValue } from "@/logic/array";
+import {getKeyByValue} from '@/logic/object'
 import { useControlStore } from "@/stores/control";
+import { useGame18Store } from "@/stores/game18";
+import { planetMapping } from "@/map/planet";
 const control = useControlStore();
+const game18=useGame18Store();
 const toggleParams = (v) => {
   toggleElement(control.params, v);
 };
-const endTurn = () => {
-  console.log("end turn");
-};
+const getActiveSector=()=>{
+  const arr = [];
+  for (let i = 0; i < 9; i++) {
+    arr.push(((game18.timeNow - 1 + i) % 18) + 1);
+  }
+  return arr;
+}
+const getActiveObj=()=>{
+  const arr=[];
+  for(let i=0; i < 9; i++) {
+    arr.push(game18.getObjectBySector(((game18.timeNow - 1 + i)%18)+1));
+  }
+  return arr;
+}
 export const researchExc = () => {
   console.log("Research run");
 };
 export const surveyExc = () => {
   console.log("Survey run");
+  const activeSectors=getActiveSector();
+  const activeObj=getActiveObj();
+  const sectorsIndex=[];
+  let type=-1;
+  for(let i=0;i<control.params.length;i++) {
+    if(Number.isInteger(control.params[i])){
+      sectorsIndex.push(activeSectors.indexOf(control.params[i]));
+    }else{
+      type=planetMapping[control.params[i]];
+    }
+  }
+  if(sectorsIndex[0]>sectorsIndex[1]){
+    [sectorsIndex[0],sectorsIndex[1]]=[sectorsIndex[1],sectorsIndex[0]];
+  }
+  const surveySectors=activeObj.slice(sectorsIndex[0],sectorsIndex[1]+1);
+  const result=arrCountValue(surveySectors,type);
+  const range=`${activeSectors[sectorsIndex[0]]}-${activeSectors[sectorsIndex[1]]}`
+  game18.saveSurveyLog(range,result,getKeyByValue(planetMapping,type));
 };
 export const targetExc = () => {
   console.log("Target run");

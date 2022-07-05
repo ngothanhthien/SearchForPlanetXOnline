@@ -5,7 +5,7 @@
 
 <template>
     <button
-        @click="$emit('buttonClick')"
+        @click="$emit('buttonClick',$event.target)"
         class="select-none first-letter:capitalize py-2 px-4 hover:opacity-high w-full transition text-center text-base font-semibold rounded-lg"
     >
         <slot></slot>

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
-
+use App\Models\User;
+use App\Models\Room;
 class UserController extends Controller
 {
     function message(Request $request){

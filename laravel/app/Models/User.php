@@ -9,4 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens,HasFactory;
+    public $timestamps = false;
+    function room(){
+        return $this->belongsTo(Room::class);
+    }
 }
