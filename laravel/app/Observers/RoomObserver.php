@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Events\RoomCreated;
+use App\Events\RoomDeleted;
 use App\Models\Room;
 
 class RoomObserver
@@ -38,7 +39,7 @@ class RoomObserver
      */
     public function deleted(Room $room)
     {
-        //
+        RoomDeleted::dispatch($room);
     }
 
     /**

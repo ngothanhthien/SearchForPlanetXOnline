@@ -11,19 +11,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class RoomCreated implements ShouldBroadcast
+class RoomDeleted implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $room;
-    public $action="createRoom";
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
+    public $room_uid;
+    public $action="deleteRoom";
     public function __construct(Room $room)
     {
-        $this->room = $room;
+        $this->room_uid = $room->name;
     }
 
     /**

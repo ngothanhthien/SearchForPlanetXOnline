@@ -13,6 +13,7 @@ class UserObserver
      * @param  \App\Models\User  $user
      * @return void
      */
+    public $afterCommit = true;
     public function created(User $user)
     {
         //

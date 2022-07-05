@@ -45,6 +45,10 @@ socket.on('laravel_database_presence-waitingRoom',(data)=>{
       }
     }
   }
+  if(data['action']=='deleteRoom'){
+    const uid=data['room_uid'];
+    delete anotherRooms.value[uid];
+  }
 });
 const backToHome = (e) => {
   e.disabled = true;
