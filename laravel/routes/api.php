@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UpdateAppController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,4 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('room/join',[RoomController::class,'join']);
 });
 Route::post('/message',[UserController::class,'message']);
+Route::post('/app/update',[UpdateAppController::class,'getMap']);

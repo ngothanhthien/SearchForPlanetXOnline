@@ -320,6 +320,7 @@ export const useGame18Store = defineStore({
     player: {
       color: "red",
       research: [],
+      target:[],
       surveys: {
         dwarf:[],
         comet:[],

@@ -23,7 +23,14 @@ const getActiveObj=()=>{
   return arr;
 }
 export const researchExc = () => {
-  console.log("Research run");
+  const letter=control.params[0];
+  if(!game18.player.research.includes(letter)){
+    console.log("Research run");
+    game18.player.research.push(letter);
+    //time
+  }else{
+    return 'You have researched this'
+  }
 };
 export const surveyExc = () => {
   console.log("Survey run");
@@ -45,12 +52,34 @@ export const surveyExc = () => {
   const result=arrCountValue(surveySectors,type);
   const range=`${activeSectors[sectorsIndex[0]]}-${activeSectors[sectorsIndex[1]]}`
   game18.saveSurveyLog(range,result,getKeyByValue(planetMapping,type));
+  //time
 };
 export const targetExc = () => {
-  console.log("Target run");
+  if(game18.player.target.length<2){
+    console.log("Target run");
+    const sector=control.params[0];
+    const planet=getKeyByValue(planetMapping,game18.map.obj[sector]);
+    return planet;
+    //hiển thị trên sector
+    //time
+  }else{
+    return 'You have target two time';
+  }
 };
-export const locateXExc = () => {
-  console.log("locate X run");
+export const locateXExc = (x,before,after) => {
+  console.log("locate X run"); 
+  const gameMap=game18.map.obj;
+  const xNum=planetMapping(x.obj);
+  const beforeNum=planetMapping(before.obj);
+  const afterNum=planetMapping(after.obj);
+  const result="";
+  if(map[x.sector]==xNum&&map[before.sector]==beforeNum&&map[after.sector]==afterNum){
+    result= "Congratulations!";
+  }else{
+    result= "Wrong Answer! :(";
+  }
+  //time
+  return result;
 };
 export const surveyTypeClick = (v) => {
   if (control.fn == "survey") {

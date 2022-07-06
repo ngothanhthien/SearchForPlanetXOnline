@@ -136,10 +136,10 @@ watch(control.params, (arr) => {
                 class="p-0.5"
                 @click="surveyTypeClick(icon[1])"
                 v-for="icon in [
-                  [DwarfIcon, 'dwarf'],
+                  [DwarfIcon, 'dwarf planet'],
                   [CometIcon, 'comet'],
                   [AsteroidIcon, 'asteroid'],
-                  [CloudIcon, 'cloud'],
+                  [CloudIcon, 'gas cloud'],
                   [EmptyIcon, 'empty'],
                 ]"
               >
