@@ -17,17 +17,17 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'account' => "user1",
-            'password' => Hash::make('096421'),
+            'password' => Hash::make('111111'),
             'level'=>2
         ]);
         DB::table('users')->insert([
             'account' => "user2",
-            'password' => Hash::make('853204'),
+            'password' => Hash::make('111111'),
             'level'=>2
         ]);
         DB::table('users')->insert([
             'account' => "user3",
-            'password' => Hash::make('278331'),
+            'password' => Hash::make('111111'),
             'level'=>2
         ]);
         DB::table('users')->insert([

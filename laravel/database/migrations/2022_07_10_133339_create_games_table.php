@@ -1,11 +1,10 @@
 <?php
 
-use App\Enums\RoomMode;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomsTable extends Migration
+class CreateGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +13,10 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
-            $table->string('name',10)->primary();
-            $table->smallInteger('capacity')->default(4);
-            $table->smallInteger('mode')->default(RoomMode::GAME_18);
+        Schema::create('games', function (Blueprint $table) {
+            $table->string('room_uid',10)->primary();
+            $table->string('map',10);
+            $table->integer('time')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('games');
     }
 }
